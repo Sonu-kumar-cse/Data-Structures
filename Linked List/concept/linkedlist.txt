@@ -1,0 +1,44 @@
+- Linked list can be defined as collection of objects called nodes that are randomly stored in the memory
+
+- A node contains two fields i.e. data stored at that particular address and the pointer which contains the address of next node in the memory
+
+- The last node of the list contains pointer to the null
+
+ -------      --------      ------------
+ | 6 | -|-->  | 4 | -|-->  | 3 | NULL |
+ --------     --------     ------------
+   ^   ^
+   |   |
+ data Link
+
+
+ Uses of linked list :-
+    
+    - The list is not required to be contiguously present in the memory.
+      The node can reside anywhere in the memory and linked together to make a list. 
+      This achives optimized solution for utilizing the space
+    
+    - List size is limited to the memory size and doesn't need to be declared in advance.
+
+    - Empty node can store values of primitive types or objects in the singly linked list.
+
+
+Why use linked list over array?
+
+    Till now we were using array data strucrure to organize the group of elements that are to be stored individually in the memory. However, array has several advantages and disadvantages which must be known in order to decide the data structure which will be used throughout the program.
+    
+
+Array contains following limitations :
+
+    - The size of array must be known in advance before using in the program
+
+    - Increasing size of the array is a time taking process. It almost impossible to expand the size of the array at run time
+
+    - All the elements in the array need to be contiguously stored in the memory. Inserting any element in the array needs shifting of all its predecessors
+
+
+Linkedlist is the data structure which can overcome all the limitations of an array. Using linkedlist is useful beacuse:
+    
+    - It allocates the memory dynamically. All the nodes of linkedlist are non-contiguously stored in the memory and linked together with the help of pointers.
+    
+    - Sizing is no longer a problem since we do not need to define its size at the time of declaration. List grows as per the programs demands and limited to the available memory space.
