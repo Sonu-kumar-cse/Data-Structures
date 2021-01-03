@@ -1,0 +1,13 @@
+- Array is a fixed size sequenced collections of data items of same data type
+- Access a particular element = arrayname[index]
+- Data items are stored in continuous fashion
+- Random access taking constant time
+- Arrayname itself contains its base address
+        ex: if a[11] is an array then "a" contains the address of first index.
+- Operations :
+        Traverse
+        Insertion
+        Deletion
+        Searching
+        Sorting
+        etc.
