@@ -1,0 +1,42 @@
+Stack is an abstract data type with a bounded(predefined) capacity.
+It is a simple data structure allows adding and removing elements in a particular order. 
+Every time an element is added, it goes on the top of the stack and the only 
+element that can be removed is the element that is at the top of  the stack, 
+just like a pile of objects.
+
+
+----Basic features of stack-----
+
+1. Stack is an ordered list of similar data type
+2. Stack is a LIFO (last in first out) structure or we can say FILO(first in last out).
+3. push() function is used to insert new elements into the stack and pop() function is used 
+   to remove an element from the stack. Both insertion and removal are allowed at only one end of
+   stack called Top.
+4. Stack is said to be in Overflow state when it is completely full and is said to be in Underflow state 
+   if it is completly empty.
+
+
+-----Application of stack--------
+
+The simplest application of a stack is to reverse a word. You push a given word to stack letter by letter and the pop letter from the stack.
+
+there are other use also like :-
+    1. Parsing 
+    2. Expression Conversion(Infix to Postfix, Postfix to Prefix etc.)
+
+
+-----Implementation of stack data structure------
+
+Stack can be easily implemented using an Array or a Linked List. 
+Array are quick, but are limited in size and Linked list requires overhead to allocate, link, unlink, and deallocate, but is not limited in size.
+
+Algorithm for PUSH operation-
+    1. Check if the stack is full or not .
+    2. If the stack is full, then print error of overflow and exit the program.
+    3. If the stack is not full then increment the top and add the element.
+
+Algorithm for POP operation-
+    1. Check if the stack is empty or not.
+    2. If the stack is empty, then print error of underflow and exit the program.
+    3. If the stack is not empty, then print the element at the top and decrement the top.
+
