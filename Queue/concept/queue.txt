@@ -1,0 +1,59 @@
+Queue is also an abstract data type or a linear data structure, just like stack data structure, 
+in which the first element is inserted from one end called the REAR(also called tail) and the removal 
+of existing element takes place from the other end called as FRONT(also called head).
+
+This makes queue as FIFO(first in first out) data structure, which means that element inserted first will be removed first.
+
+Which is exactly how queue system work in real world. If you go to a ticket counter to buy movie tickets, 
+and are first in queue, then you will be the first one to get the tickets. Right? Same is the case with queue data 
+structure. Data inserted first, will leave the queue first.
+
+The process to add an element into queue is called ENQUEUE and the process of removal of an element from queue is called DEQUEUE.
+
+
+Basic features of Queue
+    1. Like stack, queue is also an ordered list of elements of similar data types.
+    2. Queue is a FIFO(first in first out) structure.
+    3. Once a new element is inserted all the elements inserted before the new element in the queue must be removed, to remove the new element.
+    4. peek() function is oftenly used to return the value of first element without dequeuing it.
+
+
+Application of queue 
+Queue, as the name suggests is used whenever we need to manage any group of objects in
+an order in which the first one coming in, also gets out first while 
+the other wait for their turn, like in following scenarious:
+    1. Serving requests on a single shared resource, like a printer, CPU task scheduling etc.
+    2. In real life scenario, call center phone system uses queues to hold people calling them in an order, until a service representative is free.
+    3. Handling of interrupts in real time system. The interrupts are handled in same order as they arrive i.e. first come first served.
+
+
+
+Implementation of queue data structure
+
+    Queue can be implemented using an array, stack or linked list. The easiest way of implementing a queue is by using an array.
+
+    Initially the head(FRONT) and the tail(REAR) of the queue points at the first index of the array(starting the index of array from 0). 
+    As we add elements to the queue, the tail keeps on moving ahead, always pointing to the position where the next element will be inserted, 
+    while the head remains at the first index.
+
+    When we remove an element from the queue, we can follow two possible approaches.
+
+    In first approach we remove the element at the head position, and then one by one shift all the other elements in forward position.
+
+    In second approach we remove the element from the head and then move head to the next position.
+
+    In first approach there is an overhead of shifting the elements one position forward every time we remove the first element.
+    
+    In second approach there is no such overhead, but whenever we move head one position ahead, the size on queue is reduced 
+    by one space each time.
+
+
+Algorithm for ENQUEUE operation
+    1. Check if the queue is full or not.
+    2. If the queue is full, then print overflow error and exit the program.
+    3. If the queue is not full, then increment the tail and add the element.
+
+Algorithm for DEQUEUE operation
+    1. Check if the queue is empty or not.
+    2. If the queue is empty, then print underflow error and exit the program.
+    3. If the queue is not empty, then print the element at the head and increment the head.
