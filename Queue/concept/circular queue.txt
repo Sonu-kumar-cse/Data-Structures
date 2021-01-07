@@ -1,0 +1,27 @@
+Circular queue is a linear data structure in which the operation are performed based on FIFO(first in first out) 
+principle and the last position is connected back to the first position to make a circle. It is 
+also called 'Ring Buffer'.
+
+In a normal queue, we can insert elements until queue becomes full. But once queue becomes full, we 
+can not insert the next element even if there is a space in front of queue.
+
+Operations on circular queue 
+
+    front : get the front item from the queue
+    
+    rear : get the last item from queue
+    
+    enQueue(value) : This function is used to insert an element into the circular queue.
+                     In a circular queue, the new element is always inserted at rear position.
+                     steps :
+                        1. Check whether queue is full -check ( (rear+1)%SIZE==front )
+                        2. If it is full then display queue is full.
+                        3. If queue is not full then set rear=(rear+1)%SIZE and insert the element at the rear postion.
+
+    deQueue() : This function is used to delete an element from the circular queue.
+                In a circular queue the element is always deleted from front position.
+                steps :
+                    1. Check whether queue is empty means check(front==-1)
+                    2. If it is empty then display queue is empty. If queue is not empty then step 3
+                    3. Check if (front==rear) if it is true then set front=rear=-1 else set front= (front+1)%SIZE and return the element.
+
