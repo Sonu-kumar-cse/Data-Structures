@@ -71,4 +71,6 @@ int main()
     q.enQueue(232);
     q.deQueue();
     cout<<q.getFront();
+
+    return 0;
 }
