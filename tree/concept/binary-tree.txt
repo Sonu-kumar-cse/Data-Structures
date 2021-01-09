@@ -1,0 +1,79 @@
+A binary tree is a hierarchical data structure in which each node has at most two children generally referred as left child.
+ Each node contains three components:
+    1. Pointer to left subtree
+    2. Pointer to right subtree
+    3. Data element
+ the topmost node in the tree is called the root. An empty tree is represented by NULL pointer.
+
+ A representation of binary tree is shown:
+    
+    
+                          ------------
+                          |  | A |   |      <--- root node
+                          ------------
+                          /          \
+                -----------         -----------
+                |  | B | X |        |  | C |  |
+                -----------         -----------
+                /                   /         \   
+      -------------       -------------      -------------
+      | X | D | X |       | X | E | X |      | X | F | X |
+      -------------       -------------      -------------
+  
+
+Types of binary trees (Based on structure)
+
+    Rooted binary tree :
+        It has a root node and every node has atmost two children.
+    
+    Full binary tree :
+        It is a tree in which every node in the tree has either 0 or 2 children.
+        The number of nodes n, in a full binary tree is atleast n=2h-1, and atmost n=2^(h+1) - 1, where h is the height of the tree.
+        The number of leaf node l, in a full binary tree is number, L of internal nodes + 1 i.e. l=L+1.
+
+
+                    1
+                  /   \
+                 2     3
+               /  \
+              4    5
+                  /  \
+                 6    7
+
+    Perfect binary tree :
+        It is a binary tree in which all interior nodes have two children and all leaves have the same depth or same level.
+        A perfect binary tree with l leaves has n=2l-1 nodes.
+        In perfect binary tree, l=2h and n=2^(n+1) -1 where, n is number of nodes, h is height of tree and l is number of leaf nodes.
+
+                    1
+                  /   \
+                 2     3
+               /  \   /  \
+              4    5 6    7
+    
+    Complete binary tree :
+        It is a binary tree in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible.
+        The number of internal nodes in a complete binary tree of n node is floor(n/2).
+
+                        1
+                      /   \
+                     /     \
+                    2       3
+                  /  \     / \
+                 4    5    6  7
+                /\   /\   /
+               8  9 10 11 12
+    
+    Degenerate tree :
+        It is a tree in which each parent has only one child node. It behave like a linked list.
+
+            1
+             \
+              2
+               \
+                3
+                 \
+                  4
+
+
+        
