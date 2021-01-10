@@ -1,0 +1,28 @@
+
+- Binary search tree can be defined as a class of binary trees, in which the nodes are arrenged in a specific 
+  order. This is also called ordered binary tree.
+- In a binary search tree, the value of all the nodes in the left sub-tree is less than the value of the root.
+- Similarly, value of all the nodes in the right sub-tree is greater then or equal to the value of the root.
+- This rule will be recursively applied to all the left and right sub-tree of the root.
+             
+                 30
+                /  \
+               /    \
+            15       60
+          /   \     /   \ 
+         7    22   45   75
+             /  \
+            17  27
+
+    A binary search tree is shown in the above figure. As the constraint applied on the BST we can see that
+    the root node 30 in its right sub-tree.
+
+
+Advantages of using binary search tree
+
+    - Searching become very efficient in a binary search tree since, we get a hint at each step, about which 
+      sub-tree contains the desired element.
+    - The binary search tree is cinsidered  as efficient data structure in compare to arrays and linked lists. In searching 
+      process, it removes half sub-tree at every step. Searching takes O(log n) time. In worst case, the time it takes 
+      to search an elment is O(n).
+    - It also speed up the insertion and deletion operations as compare to that in array and linked list.
