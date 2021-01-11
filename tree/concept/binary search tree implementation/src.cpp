@@ -96,9 +96,6 @@ class BinarySearchTree
                 return rightHeight+1;
             }
 
-
-
-
             return 0;
         }
 
@@ -151,7 +148,7 @@ class BinarySearchTree
         //funcion for getting the height of root node
         int getRootHeight()
         {
-            return _getHeight(root);
+            return _getHeight(root)-1;
         }
         
 };
