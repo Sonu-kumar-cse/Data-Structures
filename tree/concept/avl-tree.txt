@@ -1,0 +1,142 @@
+AVL tree is a self balancing Binary Search Tree(BST) where the difference between heights of left and right subtrees cannot be more than one for all nodes
+Balance factor = height(left)-height(right)
+If the difference in the height of left and right sub tree is more than 1, the tree is balanced using some rotation techniqes.
+
+AVL tree example
+
+                12
+               /   \
+              8     18
+            /   \   /
+           5    11 17
+          /
+         4
+
+An example tree that is not an AVL tree
+
+
+                12
+               /   \
+              8     18
+            /   \   /
+           5    11 17
+          / \
+         4   7
+        /
+       2
+
+
+Why AVL tree?
+    Most of the BST operations(e.g. search, max, min, insert, delete, etc.) take O(h) time where h is the height of the BST. The cost of these operations may become O(n) for a skewed Binary Tree. If we make sure that height of the tree remains O(log n) after every insertion and deletion, then we can guarantee an upper bound of O(log n) for all these operations. The height of an AVL tree is always O(log n) where n is the number of nodes in the tree.
+
+AVL Rotations
+    To balance itself, an AVL tree may perform the following four kinds of Rotations
+    1. Left rotation
+    2. Right rotation
+    3. Left-right rotation
+    4. Right-left rotation
+
+
+    Left rotation:
+        If a tree becomes unbalanced, when a node is inserted into the right subtree of the right subtree, then we perform a single left rotation 
+
+
+                A          A    <--         B
+                 \          \      |       /  \
+                  B          B   --       A    C
+                   \          \
+                    C          C
+        
+        In our example, node A has become unbalanced as a node is inserted in the right subtree of A's right subtree. We perform the left rotation by making A the left subtree of B.
+    
+    Right rotation:
+        AVL tree may become unbalanced, if a node is inserted in the left subtree of the left subtree. The tree then needs a right rotation.
+
+                C         -->   C           B   
+               /         |     /           /  \   
+              B           --  B           A    C
+             /               /               
+            A               A             
+
+        As depicited, the unbalanced node becomes the right child of its left child by performing a right rotation.
+
+
+    Left right rotation
+        Double rotations are slightly complex version of already explained versions of rotations. To understand them better, we should take note of each action performed while rotation, Let's first check how to perform left-right rotation. A left right rotation is a combination of left rotation followed by right rotation
+
+
+        state                       action
+
+         C                         A node has been inserted into the right subtree of the left subtree.
+        /                          This makes C an unbalanced node. These scenarios cause AVL tree to perform left-right rotation
+       A
+        \
+          B 
+
+    
+          C                        We first perform the left rotation on the left subtree of C. This makes A the left subtree of B.              
+         /                          
+    --  A    <--                
+   |     \      |     
+    -->   B   --
+
+
+   
+             C                     Now C is still unbalanced, however now, it is because of the left subtree of the left subtree.
+            /
+           B 
+          /
+         A
+
+
+      -->    C                    We shall now right rotate the tree, making B the new root node of the subtree of its own left subtree.
+     |      /
+      --   B 
+          /
+         A          
+
+
+        B                         The tree is now balanced
+       / \
+      A   C
+
+
+
+        
+        Right left rotation:
+            The second type of double rotation is right left rotation. It is a combination of right rotation followed by left rotation.
+
+            
+             state                           action
+
+             A                            A node has been inserted into the left subtree of the left subtree of the right subtree.
+              \                           This makes  a an unbalanced node with balance factor 2.
+               C
+              /
+             B
+
+        
+            A                            first we perform the right rotation along C node, making C the right subtree of its own left subtree B. 
+             \                           Now B becomes the right subtree of A
+        -->  C   --
+       |    /      |
+        -- B    <--
+
+
+            A                            Node A is still unbalanced because of the right subtree and requires a left rotation.
+             \
+              B
+               \
+                C
+            
+            
+            A   <--                     A left rotation is performed by making B the new root of the subtree. A becomes the left subtree of its right subtree B.  
+             \     |
+              B  --
+               \
+                C
+
+
+            B                           The tree is now balanced.
+           / \
+          A   C
