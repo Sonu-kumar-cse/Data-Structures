@@ -1,0 +1,53 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+class Graph
+{
+    private:
+        int totalNodes;
+        int totalEdges;
+        vector<int> *graph;
+    public:
+        Graph(int nodes, int edges)
+        {
+            totalNodes=nodes;
+            totalEdges=edges;
+            vector<int> g[nodes];
+            graph=g;
+            for(int i=0;i<nodes;i++)
+            {
+                vector<int> v;
+                graph[i]= v;
+            }
+            cout<<"enter edges"<<endl;
+            for(int i=0;i<edges;i++)
+            {
+                int source,destination;
+                cin>>source>>destination;
+                graph[source].push_back(destination);
+                graph[destination].push_back(source);
+            }
+            cout<<"graph created";
+        }
+        void printGraph()
+        {
+            for(int i=0;i<totalNodes;i++)
+            {
+                cout<<i<<" -> ";
+                for(int j=0;j<graph[i].size();i++)
+                {
+                    cout<<graph[i][j]<<" ";
+                }
+                cout<<endl;
+            }
+        }
+        
+};
+
+
+int main()
+{
+    Graph g(5,6);
+    g.printGraph();
+}
