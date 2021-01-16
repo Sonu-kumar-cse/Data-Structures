@@ -7,18 +7,17 @@ class Graph
     private:
         int totalNodes;
         int totalEdges;
-        vector<int> *graph;
+        vector<vector<int>> graph;
     public:
         Graph(int nodes, int edges)
         {
             totalNodes=nodes;
             totalEdges=edges;
-            vector<int> g[nodes];
-            graph=g;
+            
             for(int i=0;i<nodes;i++)
             {
                 vector<int> v;
-                graph[i]= v;
+                graph.push_back(v);
             }
             cout<<"enter edges"<<endl;
             for(int i=0;i<edges;i++)
@@ -28,14 +27,14 @@ class Graph
                 graph[source].push_back(destination);
                 graph[destination].push_back(source);
             }
-            cout<<"graph created";
+            cout<<"graph created"<<endl;
         }
         void printGraph()
         {
-            for(int i=0;i<totalNodes;i++)
+            for(int i=0;i<graph.size();i++)
             {
                 cout<<i<<" -> ";
-                for(int j=0;j<graph[i].size();i++)
+                for(int j=0;j<graph[i].size();j++)
                 {
                     cout<<graph[i][j]<<" ";
                 }
