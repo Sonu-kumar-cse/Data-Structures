@@ -41,7 +41,36 @@ void quickSort(int arr[],int lb,int ub)
         quickSort(arr,mid+1,ub);
     }
 }
+void swap(int arr[],int i,int j)
+{
+    int temp=arr[i];
+    arr[i]=arr[j];
+    arr[j]=temp;
+}
+int partition2(int arr[],int lb,int ub)
+{
+    int i=lb-1;
+    for(int j=lb;j<ub;j++)
+    {
+        if(arr[j]<arr[ub])
+        {
+            i++;
+            swap(arr,i,j);
+        }
+    }
+    swap(arr,i+1,ub);
+    return i+1;
+}
 
+void quickSort2(int arr[],int lb, int ub)
+{
+    if(lb<ub)
+    {
+        int pivot=partition2(arr,lb,ub);
+        quickSort2(arr,lb,pivot-1);
+        quickSort2(arr,pivot+1,ub);
+    }
+}
 int main()
 {
     int n;
@@ -60,7 +89,7 @@ int main()
         cout<<arr[i]<<" ";
     }
 
-    quickSort(arr,0,n-1);
+    quickSort2(arr,0,n-1);
     cout<<endl<<"array after sorting"<<endl;
 
     for(int i=0;i<n;i++)
