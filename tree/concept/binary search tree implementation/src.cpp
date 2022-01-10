@@ -98,6 +98,69 @@ class BinarySearchTree
 
             return 0;
         }
+        
+        //code for finding successor of a given node note:- we have to pass right subtree or right node for finding successor
+        Node* findSuccessor(Node* root)
+        {
+            if(root==NULL)
+            {
+                return NULL;
+            }
+            if(root->left==NULL)
+            {
+                return root;
+            }
+            Node *left=findSuccessor(root->left);
+            return left;
+        }
+
+        //code for deletion a node or given data
+        Node* _deleteData(Node* root,int data)
+        {
+            if(root==NULL)
+            {
+                return root;
+            }
+            if(data<root->data)
+            {
+                root->left=_deleteData(root->left,data);
+            }
+            else if(data>root->data)
+            {
+                root->right=_deleteData(root->right,data);
+            }
+            else
+            {
+                if(root->left==NULL && root->right==NULL)
+                {
+                    free(root);
+                    return NULL;
+                }
+                else if(root->left==NULL && root->right!=NULL)
+                {
+                    Node* temp=root->right;
+                    free(root);
+                    return temp;
+                }
+                else if(root->right==NULL && root->left!=NULL)
+                {
+                    Node* temp=root->left;
+                    free(root);
+                    return temp;
+                }
+                else
+                {
+                    Node *successor=findSuccessor(root->right);
+                    int temp=successor->data;
+                    successor->data=root->data;
+                    root->data=temp;
+                    _deleteData(successor,successor->data);
+                }
+                
+            }
+            return root;
+
+        }
 
     public:
         //overriding default constructor
@@ -151,6 +214,10 @@ class BinarySearchTree
             return _getHeight(root)-1;
         }
         
+        void deleteData(int data)
+        {
+            _deleteData(getRoot(),data);
+        }
 };
 
 int main()
@@ -177,6 +244,12 @@ int main()
     //searching some data
     b.searchData(12);
     b.searchData(34);
+
+    b.deleteData(12);
+    b.inorderTraversal(b.getRoot());
+    cout<<endl;
+    b.deleteData(4);
+    b.inorderTraversal(b.getRoot());
     
 
     return 0;
