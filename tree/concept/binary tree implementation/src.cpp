@@ -1,4 +1,4 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 class BinaryTree
@@ -82,6 +82,65 @@ class BinaryTree
         {
             root=node;
         }
+
+        int getHeightOfTree(Node* root)
+        {
+            if(root==NULL)
+            {
+                return 0;
+            }
+            return max(getHeightOfTree(root->left),getHeightOfTree(root->right))+1;
+        }
+
+        //level order traversal without using queue
+        void _levelOrderTraversal(Node*node,int level)
+        {
+            if(node==NULL)
+            {
+                return;
+
+            }
+            if(level==1)
+            {
+                cout<<node->data<<" ";
+            }
+            if(level>1)
+            {
+                _levelOrderTraversal(node->left,level-1);
+                _levelOrderTraversal(node->right,level-1);
+            }
+        }
+        
+        //level order traversal without using queue
+        void levelOrderTraversal()
+        {
+            int level=getHeightOfTree(getroot());
+            for(int i=1;i<=level;i++)
+            {
+                _levelOrderTraversal(getroot(),i);
+            }
+        }
+
+        //level order traversal using queue
+        void levelOrederTraversalQueue(Node* root)
+        {
+            queue<Node*> q;
+            q.push(root);
+            while(!q.empty())
+            {
+                Node* temp=q.front();
+                q.pop();
+                cout<<temp->data<<" ";
+                if(temp->left!=NULL)
+                {
+                    q.push(temp->left);
+                }
+                if(temp->right!=NULL)
+                {
+                    q.push(temp->right);
+                }
+            }
+        }
 };
 
 int main()
@@ -93,6 +152,10 @@ int main()
     t.postorderTraversal(t.getroot());
     cout<<endl;
     t.preorderTraversal(t.getroot());
+    cout<<endl;
+    t.levelOrderTraversal();
+    cout<<endl;
+    t.levelOrederTraversalQueue(t.getroot());
     cout<<endl;
     
     return 0;
