@@ -42,6 +42,25 @@ class BinaryTree
 
         }
 
+        void iterativeInorderTraversal(Node *node)
+        {
+            stack<Node*> s;
+            Node *curr=node;
+            while (1)
+            {
+                while(curr!=NULL)
+                {
+                    s.push(curr);
+                    curr=curr->left;
+                }
+                if(s.empty() && curr==NULL)break;
+                cout<<s.top()->data<<" ";
+                curr=s.top()->right;
+                s.pop();
+            }
+            
+        }
+
         void inorderTraversal(Node *node)
         {
             if(node==NULL)
@@ -52,6 +71,27 @@ class BinaryTree
             cout<<node->data<<" ";
             inorderTraversal(node->right);
 
+        }
+        void iterativePreorderTraversal(Node *node)
+        {
+            stack<Node*> s;
+            Node *curr=node;
+            s.push(node);
+            while(1)
+            {
+                while(curr!=NULL)
+                {
+                    cout<<s.top()->data<<" ";
+                    curr=curr->left;
+                    if(curr!=NULL)
+                        s.push(curr);
+                }
+                if(s.empty() && curr==NULL) break;
+                curr=s.top()->right;
+                s.pop();
+                if(curr!=NULL)
+                    s.push(curr);
+            }
         }
         void preorderTraversal(Node *node)
         {
@@ -147,16 +187,19 @@ int main()
 {
     BinaryTree t;
     t.setroot(t.create());
-    t.inorderTraversal(t.getroot());
+    // t.inorderTraversal(t.getroot());
+    // cout<<endl;
+    // t.postorderTraversal(t.getroot());
+    // cout<<endl;
+    // t.preorderTraversal(t.getroot());
+    // cout<<endl;
+    // t.levelOrderTraversal();
+    // cout<<endl;
+    // t.levelOrederTraversalQueue(t.getroot());
+    // cout<<endl;
+    t.iterativePreorderTraversal(t.getroot());
     cout<<endl;
-    t.postorderTraversal(t.getroot());
-    cout<<endl;
-    t.preorderTraversal(t.getroot());
-    cout<<endl;
-    t.levelOrderTraversal();
-    cout<<endl;
-    t.levelOrederTraversalQueue(t.getroot());
-    cout<<endl;
+    t.iterativeInorderTraversal(t.getroot());
     
     return 0;
 }
