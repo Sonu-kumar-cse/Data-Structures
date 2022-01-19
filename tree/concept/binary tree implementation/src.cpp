@@ -104,6 +104,56 @@ class BinaryTree
             preorderTraversal(node->right);
 
         }
+        void iterativePostorderTraversalTwoStack(Node *node)
+        {
+            stack<Node*> s1;
+            stack<Node*> s2;
+            s1.push(node);
+            while(!s1.empty())
+            {
+                s2.push(s1.top());
+                s1.pop();
+                if(s2.top()->left!=NULL)
+                s1.push(s2.top()->left);
+                if(s2.top()->right!=NULL)
+                s1.push(s2.top()->right);
+            }
+            while(!s2.empty())
+            {
+                cout<<s2.top()->data<<" ";
+                s2.pop();
+            } 
+            
+        }
+        void iterativePostorderTraversalOneStack(Node *node)
+        {
+            stack<Node*> s;
+            Node *curr=node;
+            Node *prev=NULL;
+            while(!s.empty() || curr!=NULL )
+            {
+                if(curr!=NULL)
+                {
+                    s.push(curr);
+                    curr=curr->left;
+                }
+                else
+                {
+                    curr=s.top();
+                    if(curr->right==NULL || curr->right==prev)
+                    {
+                        cout<<curr->data<<" ";
+                        s.pop();
+                        prev=curr;
+                        curr=NULL;
+                    }
+                    else
+                    {
+                        curr=curr->right;
+                    }
+                }
+            }
+        }
         void postorderTraversal(Node *node)
         {
             if(node==NULL)
@@ -200,6 +250,10 @@ int main()
     t.iterativePreorderTraversal(t.getroot());
     cout<<endl;
     t.iterativeInorderTraversal(t.getroot());
+    cout<<endl;
+    t.iterativePostorderTraversalOneStack(t.getroot());
+    cout<<endl;
+    t.iterativePostorderTraversalTwoStack(t.getroot());
     
     return 0;
 }
